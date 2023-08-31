@@ -1,0 +1,30 @@
+{
+  "name": "base2base",
+  "version": "1.0.1",
+  "description": "Node function to convert any number, from and to, bases 2 to 36 + 64",
+  "main": "dist/base2base.js",
+  "types": "dist/base2base.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zWolfrost/base2base.git"
+  },
+  "author": "zWolfrost",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zWolfrost/base2base/issues"
+  },
+  "homepage": "https://github.com/zWolfrost/base2base#readme",
+  "keywords": [
+    "base",
+    "convert",
+    "node",
+    "nodejs"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.5.7"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "files": ["src/base2base.ts"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6",
+    "outDir": "./dist",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true
+  }
+}
