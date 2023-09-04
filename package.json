@@ -1,7 +1,7 @@
 {
   "name": "base2base",
-  "version": "1.0.1",
-  "description": "Node function to convert any number, from and to, bases 2 to 36 + 64",
+  "version": "1.1.0",
+  "description": "A node.js typescript function to convert any string/number, from & to all the bases ranging between 2-36 and base64.",
   "main": "dist/base2base.js",
   "types": "dist/base2base.d.ts",
   "scripts": {

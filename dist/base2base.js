@@ -1,17 +1,21 @@
 "use strict";
-function satisfiesBase(str, base) {
-    if (base == 64)
-        return true;
-    const CHARS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const BASE_CHARS = CHARS.slice(0, base);
-    let satisfies = Array.from(str).every(char => BASE_CHARS.includes(char));
+function satisfiesBase(str, base = Infinity) {
+    let baseChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    switch (base) {
+        case 64:
+            baseChars += "+/=_-";
+            break;
+        default: baseChars = baseChars.slice(0, base);
+    }
+    let satisfies = str.toString().split("").every(char => baseChars.includes(char));
     return satisfies;
 }
 module.exports = function base2base(str, { from, to, strict = false } = {}) {
+    const invalidReturnType = NaN;
     str = str.toString();
     //Strictly checking all string characters
     if (strict && from && satisfiesBase(str, from) == false)
-        return NaN;
+        return invalidReturnType;
     //Converting from given base to base 10 (case)
     switch (from) {
         case 64: return Buffer.from(str, "base64").toString();
@@ -21,10 +25,10 @@ module.exports = function base2base(str, { from, to, strict = false } = {}) {
         case 64: return Buffer.from(str).toString("base64");
     }
     //Converting from given base to base 10 (general)
-    let base10 = parseInt(str, from);
+    const base10 = parseInt(str, from);
     if (isNaN(base10))
-        return NaN;
+        return invalidReturnType;
     //Converting from base 10 to given base (general)
-    let res = base10.toString(to);
+    const res = base10.toString(to);
     return res;
 };

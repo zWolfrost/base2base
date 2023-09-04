@@ -1,5 +1,5 @@
 # base2base
-A node function to convert any number, FROM & TO all the bases ranging from 1-36 AND base 64.
+A node.js typescript function to convert any string/number, **from** & **to** all the bases ranging between 2-36 **and** base64.
 
 &nbsp;
 ## How to use
@@ -40,9 +40,11 @@ console.log(invalidBinaryStrict)
 <br>- First commit.
   - v1.0.1
   <br>- Fixed bug where Intellisense wouldn't work.
+- **v1.1.0**
+<br>- Added strict mode for base64 as well.
 
 &nbsp;
 ## Found a bug and/or need help?
-Please [open an issue](https://github.com/zWolfrost/base2base/issues) on Github to request a change, report a bug or ask for help about something and i will gladly look into it.
+Please [open an issue](https://github.com/zWolfrost/base2base/issues) on GitHub to request a change, report a bug or ask for help about something and i will gladly look into it.
 
-If you like this library, consider giving it a star on [Github](https://github.com/zWolfrost/base2base). It means a lot :)
+If you like this library, consider giving it a star on [GitHub](https://github.com/zWolfrost/base2base). It means a lot :)

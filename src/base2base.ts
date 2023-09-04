@@ -9,10 +9,12 @@
  */
 export = function base2base(str: string | number, { from, to, strict=false }: {from?: number, to?: number, strict?: boolean} = {}): string | number
 {
+   const invalidReturnType = NaN
+
    str = str.toString()
 
    //Strictly checking all string characters
-   if (strict && from && satisfiesBase(str, from) == false) return NaN
+   if (strict && from && satisfiesBase(str, from) == false) return invalidReturnType
 
    //Converting from given base to base 10 (case)
    switch (from)
@@ -26,25 +28,28 @@ export = function base2base(str: string | number, { from, to, strict=false }: {f
    }
 
    //Converting from given base to base 10 (general)
-   let base10 = parseInt(str, from);
+   const base10 = parseInt(str, from);
 
-   if (isNaN(base10)) return NaN;
+   if (isNaN(base10)) return invalidReturnType;
 
    //Converting from base 10 to given base (general)
-   let res = base10.toString(to);
+   const res = base10.toString(to);
 
    return res;
 }
 
 
-function satisfiesBase(str: string, base: number): boolean
+function satisfiesBase(str: string | number, base: number=Infinity): boolean
 {
-   if (base == 64) return true
+   let baseChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-   const CHARS = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-   const BASE_CHARS = CHARS.slice(0, base)
+   switch (base)
+   {
+      case 64: baseChars += "+/=_-"; break;
+      default: baseChars = baseChars.slice(0, base)
+   }
 
-   let satisfies = Array.from(str).every(char => BASE_CHARS.includes(char))
+   let satisfies = str.toString().split("").every(char => baseChars.includes(char))
 
    return satisfies
 }
